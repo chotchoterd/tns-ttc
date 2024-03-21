@@ -1,0 +1,102 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Mitr', sans-serif;
+	font-family: 'Prompt', sans-serif;
+	font-size: 14px;
+}
+
+.mit {
+	vertical-align: middle;
+	text-align: center;
+}
+
+.mit-v {
+	vertical-align: middle !important;
+}
+
+.bg-nav-background {
+	background: #00405B;
+	color: #fff;
+}
+
+.white {
+	color: white !important;
+}
+
+.red {
+	color: red;
+}
+
+.form_request_head {
+	background-color: #203764 !important;
+	color: #fff;
+}
+
+.form_request_head_yellow {
+	background-color: #edede9 !important;
+}
+
+td.form_request_head_yellow_two {
+	background-color: #edede9;
+}
+
+.btn_color_df {
+	background-color: #203764 !important;
+	border: none;
+}
+
+.btn_color_df:hover {
+	background-color: #edede9 !important;
+	border: none;
+	color: #000000;
+}
+
+.font-twelve {
+	font-size: 9px !important;
+}
+
+ul li {
+	display: inline-block;
+	/* border-radius: 5%; */
+}
+
+ul li:hover {
+	background: #032939;
+	border-radius: 3px;
+}
+
+ul li:hover ul {
+	display: block;
+}
+
+ul li ul {
+	position: absolute;
+	/* width: 200px; */
+	display: none;
+}
+
+::placeholder {
+	font-size: 8px;
+}
+
+.active-bg {
+	background-color: #00405B;
+	/* background-color: #375496; */
+	color: #ffffff;
+	border-radius: 2px;
+	padding: 2px;
+}
+
+.inactive-bg {
+	background-color: #ff001e;
+	/* background-color: #d33; */
+	color: #ffffff;
+	border-radius: 2px;
+	padding: 2px;
+}
+
+.custom-title-class {
+	font-size: 1.575em;
+}
