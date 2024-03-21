@@ -1,6 +1,7 @@
 <?php
 $i = 0;
 include 'scriptHistoryForAdmin.php';
+$new = date("Y");
 ?>
 <div class="container-fluid mt-3">
     <fieldset>
