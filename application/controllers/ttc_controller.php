@@ -290,6 +290,44 @@ class Ttc_controller extends CI_Controller
         $this->read_json($json);
     }
 
+    //####
+    function get_position()
+    {
+        $rs = $this->ttc->model_position_request();
+        if ($rs) {
+            $rows = json_encode($rs);
+            $json = '{"ok": true, "rows": ' . $rows . '}';
+        } else {
+            $json = '{"ok": false}';
+        }
+        $this->read_json($json);
+    }
+
+    function get_section()
+    {
+        $rs = $this->ttc->model_section_request();
+        if ($rs) {
+            $rows = json_encode($rs);
+            $json = '{"ok": true, "rows": ' . $rows . '}';
+        } else {
+            $json = '{"ok": false}';
+        }
+        $this->read_json($json);
+    }
+
+    function get_company()
+    {
+        $rs = $this->ttc->model_company_request();
+        if ($rs) {
+            $rows = json_encode($rs);
+            $json = '{"ok": true, "rows": ' . $rows . '}';
+        } else {
+            $json = '{"ok": false}';
+        }
+        $this->read_json($json);
+    }
+    //####
+
     function read_json($json)
     {
         ini_set('display_errors', 0);
@@ -314,6 +352,11 @@ class Ttc_controller extends CI_Controller
         } else {
             $group = "";
         }
+        //####
+        $position_request['position_request'] = $this->ttc->model_position_request();
+        $section_request['section_request'] = $this->ttc->model_section_request();
+        $company_request['company_request'] = $this->ttc->model_company_request();
+        //####
         $trainer['trainer'] = $this->ttc->model_trainer();
         $currency['currency'] = $this->ttc->model_currency();
         $user_request_course_title['user_request_course_title'] = $this->ttc->model_user_request_course_title();
@@ -332,7 +375,7 @@ class Ttc_controller extends CI_Controller
         $title['title'] = 'Request Training !';
         $this->load->view('include/header', $title);
         $this->load->view('include/menu', $approve_data + $user_request_course_title + $user_request_training_provider + $user_request_trainer);
-        $this->load->view('formRequest', $course_title + $category + $training_provider + $reason_training + $division + $approval_matrix + $approval_matrix_project_code + $approval_matrix_cost_code + $formRequest_id + $currency + $trainer);
+        $this->load->view('formRequest', $company_request + $section_request + $position_request + $course_title + $category + $training_provider + $reason_training + $division + $approval_matrix + $approval_matrix_project_code + $approval_matrix_cost_code + $formRequest_id + $currency + $trainer);
         $this->load->view('include/footer');
     }
 

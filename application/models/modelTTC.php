@@ -21,6 +21,17 @@ class ModelTTC extends CI_Model
         return $rs;
     }
 
+    // function model_form_division()
+    // {
+    //     $sql = "SELECT DISTINCT([DIV_CODE]) AS division_id,[DIV_NAME] AS division_name FROM [TNS-MACS].[dbo].[VW_EDMS_DIVISION_DISCIPLINES]
+    //     WHERE DIV_CODE not in ('MYMA','NSE')
+    //     ORDER BY DIV_NAME";
+    //     $rs = $this->db_macs
+    //         ->query($sql)
+    //         ->result();
+    //     return $rs;
+    // }
+
     function model_category()
     {
         $sql = "SELECT * FROM tb_category WHERE status = 1
@@ -1553,6 +1564,39 @@ class ModelTTC extends CI_Model
     {
         $sql = "SELECT *  FROM tb_request_trainer WHERE id = '" . $id_re . "'";
         $rs = $this->db_ttc
+            ->query($sql)
+            ->result();
+        // print_r($sql);
+        return $rs;
+    }
+
+    function model_position_request()
+    {
+        $sql = "SELECT DISTINCT(TRIM(position_name)) AS trimmed_position_name FROM position
+        ORDER BY trimmed_position_name ASC";
+        $rs = $this->db_user
+            ->query($sql)
+            ->result();
+        // print_r($sql);
+        return $rs;
+    }
+
+    function model_section_request()
+    {
+        $sql = "SELECT DISTINCT(TRIM(SUBSTR(section_name, 5))) AS trim_section_name FROM section
+        ORDER BY trim_section_name ASC";
+        $rs = $this->db_user
+            ->query($sql)
+            ->result();
+        // print_r($sql);
+        return $rs;
+    }
+
+    function model_company_request()
+    {
+        $sql = "SELECT DISTINCT(TRIM(company_name)) AS trim_company_name FROM company
+        ORDER BY trim_company_name ASC";
+        $rs = $this->db_user
             ->query($sql)
             ->result();
         // print_r($sql);

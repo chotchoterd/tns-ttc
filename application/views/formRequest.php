@@ -737,13 +737,13 @@ include 'checkAdminUser.php';
                 </td>
             </tr>
             <tr>
+                <td class="form_request_head border mit">Action</td>
                 <td class="form_request_head border mit">Attendee Name<span class="red"> * </span></td>
                 <td class="form_request_head border mit">Employee ID</td>
                 <td class="form_request_head border mit">Position<span class="red"> * </span></td>
                 <td class="form_request_head border mit">Section<span class="red"> * </span></td>
                 <td class="form_request_head border mit">Division<span class="red"> * </span></td>
                 <td class="form_request_head border mit">Company<span class="red"> * </span></td>
-                <td class="form_request_head border mit">Manage</td>
             </tr>
             <?php if ($update_indicator == 1) { ?>
                 <?php
@@ -825,6 +825,9 @@ include 'checkAdminUser.php';
                 </tbody>
             <?php } else { ?>
                 <tr>
+                    <td class="border mit">
+                        <button onclick="addInput()" class="btn btn-primary btn_color_df" type="button" style="width: 100px;">Add User</button>
+                    </td>
                     <td class="border">
                         <div class="form-floating">
                             <textarea class="form-control h-textarea" id="attendee_name" name="attendee_name[]"><?php echo $_SESSION["username"]; ?></textarea>
@@ -837,17 +840,31 @@ include 'checkAdminUser.php';
                             <!-- <label class="font-twelve">Please fill in Training Provider <span class="red font-twelve">*</span></label> -->
                         </div>
                     </td>
-                    <td class="border">
-                        <div class="form-floating">
+                    <td class="border mit">
+                        <!-- <div class="form-floating">
                             <textarea class="form-control h-textarea" id="position" name="position[]"><?php echo $_SESSION["position"]; ?></textarea>
                             <label class="font-twelve">Please fill in Position <span class="red font-twelve">*</span></label>
-                        </div>
+                        </div> -->
+                        <label class="font-twelve" style="color: #999;">Please select Position <span class="red font-twelve">*</span></label>
+                        <select name="section[]" id="section" class="form-select">
+                            <option value="" class="mit">- Select -</option>
+                            <?php foreach ($position_request as $position_requests) { ?>
+                                <option value="<?php echo $position_requests->trimmed_position_name ?>" <?php if ($_SESSION["position"] == $position_requests->trimmed_position_name) echo "selected"; ?>><?php echo $position_requests->trimmed_position_name ?></option>
+                            <?php } ?>
+                        </select>
                     </td>
-                    <td class="border">
-                        <div class="form-floating">
+                    <td class="border mit">
+                        <!-- <div class="form-floating">
                             <textarea class="form-control h-textarea" id="section" name="section[]"><?php echo $_SESSION["section"]; ?></textarea>
                             <label class="font-twelve">Please fill in Section <span class="red font-twelve">*</span></label>
-                        </div>
+                        </div> -->
+                        <label class="font-twelve" style="color: #999;">Please select Section<span class="red font-twelve">*</span></label>
+                        <select name="section[]" id="section" class="form-select">
+                            <option value="" class="mit">- Select -</option>
+                            <?php foreach ($section_request as $section_requests) { ?>
+                                <option value="<?php echo $section_requests->trim_section_name ?>" <?php if ($_SESSION["section"] == $section_requests->trim_section_name) echo "selected"; ?>><?php echo $section_requests->trim_section_name ?></option>
+                            <?php } ?>
+                        </select>
                     </td>
                     <td class="border mit">
                         <label class="font-twelve" style="color: #999;">Please select Division <span class="red font-twelve">*</span></label>
@@ -858,15 +875,18 @@ include 'checkAdminUser.php';
                             <?php } ?>
                         </select>
                     </td>
-                    <td class="border">
-                        <div class="form-floating">
+                    <td class="border mit">
+                        <!-- <div class="form-floating">
                             <textarea class="form-control h-textarea" id="company" name="company[]"><?php echo $_SESSION["company_name"] ?></textarea>
                             <label class="font-twelve">Please fill in Company <span class="red font-twelve">*</span></label>
-                        </div>
-                    </td>
-                    <td class="border mit">
-                        <!-- <button onclick="addInput()" class="btn btn-primary btn_color_df" type="button" style="width: 50px;"><b class="h4">+</b></button> -->
-                        <button onclick="addInput()" class="btn btn-primary btn_color_df" type="button" style="width: 100px;">Add User</button>
+                        </div> -->
+                        <label class="font-twelve" style="color: #999;">Please select Company <span class="red font-twelve">*</span></label>
+                        <select name="company[]" id="company" class="form-select">
+                            <option value="" class="mit">- Select -</option>
+                            <?php foreach ($company_request as $company_requests) { ?>
+                                <option value="<?php echo $company_requests->trim_company_name ?>" <?php if ($_SESSION["company_name"] == $company_requests->trim_company_name) echo "selected"; ?>><?php echo $company_requests->trim_company_name ?></option>
+                            <?php } ?>
+                        </select>
                     </td>
                 </tr>
                 <tbody id="tbody">
@@ -919,13 +939,13 @@ include 'checkAdminUser.php';
                 <td colspan="7">
                     <?php if ($update_indicator == 1) { ?>
                         <!-- <div class="form-floating"> -->
-                            <textarea class="form-control h-textarea" id="up_supervisor_expectation" name="up_supervisor_expectation" style="height: 100%;"><?php echo $formRequest_ids->supervisor_expectation ?></textarea>
-                            <!-- <label class="font-twelve">Please fill in Supervisor's Expectation <span class="red font-twelve">*</span></label> -->
+                        <textarea class="form-control h-textarea" id="up_supervisor_expectation" name="up_supervisor_expectation" style="height: 100%;"><?php echo $formRequest_ids->supervisor_expectation ?></textarea>
+                        <!-- <label class="font-twelve">Please fill in Supervisor's Expectation <span class="red font-twelve">*</span></label> -->
                         <!-- </div> -->
                     <?php } else { ?>
                         <!-- <div class="form-floating"> -->
-                            <textarea class="form-control h-textarea" id="supervisor_expectation" name="supervisor_expectation" style="height: 100%;"></textarea>
-                            <!-- <label class="font-twelve">Please fill in Supervisor's Expectation <span class="red font-twelve">*</span></label> -->
+                        <textarea class="form-control h-textarea" id="supervisor_expectation" name="supervisor_expectation" style="height: 100%;"></textarea>
+                        <!-- <label class="font-twelve">Please fill in Supervisor's Expectation <span class="red font-twelve">*</span></label> -->
                         <!-- </div> -->
                     <?php } ?>
                 </td>

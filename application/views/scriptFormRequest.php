@@ -393,13 +393,13 @@
             emp_id += emp_id_list;
             let position = [];
             let position_list = [];
-            $.each($("textarea[name='position[]"), function() {
+            $.each($("select[name='position[]"), function() {
                 position_list.push($(this).val());
             });
             position += position_list;
             let section = [];
             let section_list = [];
-            $.each($("textarea[name='section[]"), function() {
+            $.each($("select[name='section[]"), function() {
                 section_list.push($(this).val());
             });
             section += section_list;
@@ -411,7 +411,7 @@
             division += division_list;
             let company = [];
             let company_list = [];
-            $.each($("textarea[name='company[]"), function() {
+            $.each($("select[name='company[]"), function() {
                 company_list.push($(this).val());
             });
             company += company_list;
@@ -1068,13 +1068,13 @@
         emp_id += emp_id_list;
         let position = [];
         let position_list = [];
-        $.each($("textarea[name='position[]"), function() {
+        $.each($("select[name='position[]"), function() {
             position_list.push($(this).val());
         });
         position += position_list;
         let section = [];
         let section_list = [];
-        $.each($("textarea[name='section[]"), function() {
+        $.each($("select[name='section[]"), function() {
             section_list.push($(this).val());
         });
         section += section_list;
@@ -1086,7 +1086,7 @@
         division += division_list;
         let company = [];
         let company_list = [];
-        $.each($("textarea[name='company[]"), function() {
+        $.each($("select[name='company[]"), function() {
             company_list.push($(this).val());
         });
         company += company_list;
@@ -1330,13 +1330,13 @@
         emp_id += emp_id_list;
         let position = [];
         let position_list = [];
-        $.each($("textarea[name='position[]"), function() {
+        $.each($("select[name='position[]"), function() {
             position_list.push($(this).val());
         });
         position += position_list;
         let section = [];
         let section_list = [];
-        $.each($("textarea[name='section[]"), function() {
+        $.each($("select[name='section[]"), function() {
             section_list.push($(this).val());
         });
         section += section_list;
@@ -1348,7 +1348,7 @@
         division += division_list;
         let company = [];
         let company_list = [];
-        $.each($("textarea[name='company[]"), function() {
+        $.each($("select[name='company[]"), function() {
             company_list.push($(this).val());
         });
         company += company_list;
@@ -1475,36 +1475,67 @@
     var items = 0;
 
     function addInput() {
-        // items++;
-        // var Please_Add_User = document.querySelectorAll(".Please_Add_User");
-        // Please_Add_User.forEach(function(element) {
-        //     element.style.display = "none";
-        // });
-        $.ajax({
-            url: '<?php echo base_url(); ?>index.php/ttc_controller/get_division',
-            dataType: 'json',
-            type: 'GET',
-            success: function(data) {
-                var html = "<tr>";
-                html += "<td class=\"border\"><div class=\"form-floating\"><textarea class=\"form-control h-textarea\" id=\"attendee_name\" name=\"attendee_name[]\"></textarea><label class=\"font-twelve\">Please fill in Name <span class=\"red font-twelve\">*</span></label></div></td>";
-                html += "<td class=\"border mit\"><div class=\"\"><textarea class=\"form-control h-textarea\" id=\"emp_id\" name=\"emp_id[]\"></textarea></div></td>";
-                html += "<td class=\"border\"><div class=\"form-floating\"><textarea class=\"form-control h-textarea\" id=\"position\" name=\"position[]\"></textarea><label class=\"font-twelve\">Please fill in Position <span class=\"red font-twelve\">*</span></label></div></td>";
-                html += "<td class=\"border\"><div class=\"form-floating\"><textarea class=\"form-control h-textarea\" id=\"section\" name=\"section[]\"></textarea><label class=\"font-twelve\">Please fill in Section <span class=\"red font-twelve\">*</span></label></div></td>";
-                html += "<td class=\"border mit\">";
-                html += "<label class=\"font-twelve\" style=\"color: #999;\">Please select Division <span class=\"red font-twelve\">*</span></label>"
-                html += "<select name=\"division[]\" id=\"division\" class=\"form-select\" aria-label=\"Default select example\"><option value=\"\" class=\"mit\">- Select - </option>";
-                $.each(data.rows, function(index, rowss) {
-                    html += "<option value=\"" + rowss.division_name + "\">" + rowss.division_name + "</option>";
-                });
-                html += "</select>";
-                html += "</td>";
-                html += "<td class=\"border\"><div class=\"form-floating\"><textarea class=\"form-control h-textarea\" id=\"company\" name=\"company[]\"></textarea><label class=\"font-twelve\">Please fill in Company <span class=\"red font-twelve\">*</span></label></div></td>";
-                // html += "<td class=\"border mit\"><button class=\"btn btn-primary btn_color_df\" type='button' onclick='deleteRow(this);'><b>-</b></button></td>"
-                html += "<td class=\"border mit\"><button class=\"btn btn-primary btn_color_df\" type='button' onclick='deleteRow(this);' style=\"width: 100px;\">Delete</button></td>"
-                html += "</tr>";
-                var row = document.getElementById("tbody").insertRow();
-                row.innerHTML = html;
-            }
+        $.when(
+            $.ajax({
+                url: '<?php echo base_url(); ?>index.php/ttc_controller/get_division',
+                dataType: 'json',
+                type: 'GET'
+            }),
+            $.ajax({
+                url: '<?php echo base_url(); ?>index.php/ttc_controller/get_position',
+                dataType: 'json',
+                type: 'GET'
+            }),
+            $.ajax({
+                url: '<?php echo base_url(); ?>index.php/ttc_controller/get_section',
+                dataType: 'json',
+                type: 'GET'
+            }),
+            $.ajax({
+                url: '<?php echo base_url(); ?>index.php/ttc_controller/get_company',
+                dataType: 'json',
+                type: 'GET'
+            }),
+        ).done(function(divisionData, positionData, sectionData, companyData) {
+            var html = "<tr>";
+            html += "<td class=\"border mit\"><button class=\"btn btn-primary btn_color_df\" type='button' onclick='deleteRow(this);' style=\"width: 100px;\">Delete</button></td>";
+            html += "<td class=\"border\"><div class=\"form-floating\"><textarea class=\"form-control h-textarea\" id=\"attendee_name\" name=\"attendee_name[]\"></textarea><label class=\"font-twelve\">Please fill in Name <span class=\"red font-twelve\">*</span></label></div></td>";
+            html += "<td class=\"border mit\"><div class=\"\"><textarea class=\"form-control h-textarea\" id=\"emp_id\" name=\"emp_id[]\"></textarea></div></td>";
+
+            html += "<td class=\"border\"><label class=\"font-twelve\" style=\"color: #999;\">Please select Position <span class=\"red font-twelve\">*</span></label>";
+            html += "<select name=\"position[]\" id=\"position\" class=\"form-select\">";
+            html += "<option value=\"\" class=\"mit\">- Select -</option>";
+            $.each(positionData[0].rows, function(index, positions) {
+                html += "<option value=\"" + positions.trimmed_position_name + "\">" + positions.trimmed_position_name + "</option>";
+            });
+            html += "</select></td>";
+            html += "<td class=\"border\"><label class=\"font-twelve\" style=\"color: #999;\">Please select Section <span class=\"red font-twelve\">*</span></label>";
+            html += "<select name=\"section[]\" id=\"section\" class=\"form-select\">";
+            html += "<option value=\"\" class=\"mit\">- Select -</option>";
+            $.each(sectionData[0].rows, function(index, sections) {
+                html += "<option value=\"" + sections.trim_section_name + "\">" + sections.trim_section_name + "</option>";
+            });
+            html += "</select></td>";
+            html += "<td class=\"border mit\">";
+            html += "<label class=\"font-twelve\" style=\"color: #999;\">Please select Division <span class=\"red font-twelve\">*</span></label>"
+            html += "<select name=\"division[]\" id=\"division\" class=\"form-select\" aria-label=\"Default select example\"><option value=\"\" class=\"mit\">- Select - </option>";
+            $.each(divisionData[0].rows, function(index, rowss) {
+                html += "<option value=\"" + rowss.division_name + "\">" + rowss.division_name + "</option>";
+            });
+            html += "</select></td>";
+            html += "<td class=\"border mit\"><label class=\"font-twelve\" style=\"color: #999;\">Please select Company <span class=\"red font-twelve\">*</span></label>";
+            html += "<select name=\"company[]\" id=\"company\" class=\"form-select\">";
+            html += "<option value=\"\" class=\"mit\">- Select -</option>";
+            $.each(companyData[0].rows, function(index, companys) {
+                html += "<option value=\"" + companys.trim_company_name + "\">" + companys.trim_company_name + "</option>";
+            });
+            html += "</select></td>";
+            html += "</tr>";
+            var row = document.getElementById("tbody").insertRow();
+            row.innerHTML = html;
+        }).fail(function(xhr, status, error) {
+            console.log("Error:", error);
+            alert("An error occurred while fetching data. Please try again later.");
         });
     }
 
