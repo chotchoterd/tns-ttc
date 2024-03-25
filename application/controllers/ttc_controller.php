@@ -1866,6 +1866,11 @@ class Ttc_controller extends CI_Controller
         } else {
             $group = "";
         }
+        //####
+        $position_request['position_request'] = $this->ttc->model_position_request();
+        $section_request['section_request'] = $this->ttc->model_section_request();
+        $company_request['company_request'] = $this->ttc->model_company_request();
+        //####
         $trainer['trainer'] = $this->ttc->model_trainer();
         $currency['currency'] = $this->ttc->model_currency();
         $user_request_course_title['user_request_course_title'] = $this->ttc->model_user_request_course_title();
@@ -1886,7 +1891,7 @@ class Ttc_controller extends CI_Controller
         $title['title'] = 'Training Request For Admin';
         $this->load->view('include/header', $title);
         $this->load->view('include/menu', $approve_data + $user_request_course_title + $user_request_training_provider + $user_request_trainer);
-        $this->load->view('formRequestStaticForAdmin', $reason_training + $training_request_data + $approval_matrix + $approval_matrix_project_code + $approval_matrix_cost_code + $division + $category + $course_title + $training_provider + $currency + $trainer);
+        $this->load->view('formRequestStaticForAdmin', $company_request + $section_request + $position_request + $reason_training + $training_request_data + $approval_matrix + $approval_matrix_project_code + $approval_matrix_cost_code + $division + $category + $course_title + $training_provider + $currency + $trainer);
         $this->load->view('include/footer');
     }
 
