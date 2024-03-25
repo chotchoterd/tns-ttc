@@ -529,13 +529,13 @@
             emp_id += emp_id_list;
             var position = [];
             var position_list = [];
-            $.each($("textarea[name='up_position[]"), function() {
+            $.each($("select[name='up_position[]"), function() {
                 position_list.push($(this).val());
             });
             position += position_list;
             var section = [];
             var section_list = [];
-            $.each($("textarea[name='up_section[]"), function() {
+            $.each($("select[name='up_section[]"), function() {
                 section_list.push($(this).val());
             });
             section += section_list;
@@ -547,7 +547,7 @@
             division += division_list;
             var company = [];
             var company_list = [];
-            $.each($("textarea[name='up_company[]"), function() {
+            $.each($("select[name='up_company[]"), function() {
                 company_list.push($(this).val());
             });
             company += company_list;
@@ -791,7 +791,7 @@
                     }
                 });
                 return false;
-            } else if (currency.val() === "THB" && (course_fee.val() === "0" || course_fee.val() === "")) {
+            } else if (currency.val() === "THB" && course_fee.val() === "") {
                 Swal.fire({
                     title: "You did not fill Course Fee",
                     text: "Please fill in Course Fee",
@@ -804,7 +804,7 @@
                     }
                 });
                 return false;
-            } else if (currency.val() != "THB" && (course_fee.val() === "0" || course_fee.val() === "" || exchange_rate.val() === "" || exchange_rate.val() === "0" || exchange_date.val() === "")) {
+            } else if (currency.val() != "THB" && (course_fee.val() === "" || exchange_rate.val() === "" || exchange_rate.val() === "0" || exchange_date.val() === "")) {
                 Swal.fire({
                     title: "You did not fill Course Fee, Exchange Rate or Exchange Date",
                     text: "Please fill in Course Fee, Exchange Rate and Exchange Date",
@@ -1193,13 +1193,13 @@
         emp_id += emp_id_list;
         var position = [];
         var position_list = [];
-        $.each($("textarea[name='up_position[]"), function() {
+        $.each($("select[name='up_position[]"), function() {
             position_list.push($(this).val());
         });
         position += position_list;
         var section = [];
         var section_list = [];
-        $.each($("textarea[name='up_section[]"), function() {
+        $.each($("select[name='up_section[]"), function() {
             section_list.push($(this).val());
         });
         section += section_list;
@@ -1211,7 +1211,7 @@
         division += division_list;
         var company = [];
         var company_list = [];
-        $.each($("textarea[name='up_company[]"), function() {
+        $.each($("select[name='up_company[]"), function() {
             company_list.push($(this).val());
         });
         company += company_list;
