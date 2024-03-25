@@ -1537,35 +1537,67 @@
     var items = 0;
 
     function up_addInput() {
-        // items++;
-        // var Please_Add_User = document.querySelectorAll(".Please_Add_User");
-        // Please_Add_User.forEach(function(element) {
-        //     element.style.display = "none";
-        // });
-        $.ajax({
-            url: '<?php echo base_url(); ?>index.php/ttc_controller/get_division',
-            dataType: 'json',
-            type: 'GET',
-            success: function(data) {
-                var html = "<tr>";
-                html += "<td class=\"border\"><div class=\"form-floating\"><textarea class=\"form-control h-textarea\" id=\"up_attendee_name\" name=\"up_attendee_name[]\"></textarea><label class=\"font-twelve\">Please fill in Name <span class=\"red font-twelve\">*</span></label></div></td>";
-                html += "<td class=\"border mit\"><div><textarea class=\"form-control h-textarea\" id=\"up_emp_id\" name=\"up_emp_id[]\"></textarea></div></td>";
-                html += "<td class=\"border\"><div class=\"form-floating\"><textarea class=\"form-control h-textarea\" id=\"up_position\" name=\"up_position[]\"></textarea><label class=\"font-twelve\">Please fill in Position <span class=\"red font-twelve\">*</span></label></div></td>";
-                html += "<td class=\"border\"><div class=\"form-floating\"><textarea class=\"form-control h-textarea\" id=\"up_section\" name=\"up_section[]\"></textarea><label class=\"font-twelve\">Please fill in Section <span class=\"red font-twelve\">*</span></label></div></td>";
-                html += "<td class=\"border mit\">";
-                html += "<label class=\"font-twelve\" style=\"color: #999;\">Please select Division <span class=\"red font-twelve\">*</span></label>"
-                html += "<select name=\"up_division[]\" id=\"up_division\" class=\"form-select\" aria-label=\"Default select example\"><option value=\"\" class=\"mit\">- Select - </option>";
-                $.each(data.rows, function(index, rowss) {
-                    html += "<option value=\"" + rowss.division_name + "\">" + rowss.division_name + "</option>";
-                });
-                html += "</select>";
-                html += "</td>";
-                html += "<td class=\"border\"><div class=\"form-floating\"><textarea class=\"form-control h-textarea\" id=\"up_company\" name=\"up_company[]\"></textarea><label class=\"font-twelve\">Please fill in Company <span class=\"red font-twelve\">*</span></label></div></td>";
-                html += "<td class=\"border mit\"><button class=\"btn btn-primary btn_color_df\" type='button' onclick='deleteRow(this);' style=\"width: 100px;\">Delete</button></td>"
-                html += "</tr>";
-                var row = document.getElementById("up_tbody").insertRow();
-                row.innerHTML = html;
-            }
+        $.when(
+            $.ajax({
+                url: '<?php echo base_url(); ?>index.php/ttc_controller/get_division',
+                dataType: 'json',
+                type: 'GET'
+            }),
+            $.ajax({
+                url: '<?php echo base_url(); ?>index.php/ttc_controller/get_position',
+                dataType: 'json',
+                type: 'GET'
+            }),
+            $.ajax({
+                url: '<?php echo base_url(); ?>index.php/ttc_controller/get_section',
+                dataType: 'json',
+                type: 'GET'
+            }),
+            $.ajax({
+                url: '<?php echo base_url(); ?>index.php/ttc_controller/get_company',
+                dataType: 'json',
+                type: 'GET'
+            }),
+        ).done(function(divisionData, positionData, sectionData, companyData) {
+            var html = "<tr>";
+            html += "<td class=\"border mit\"><button class=\"btn btn-primary btn_color_df\" type='button' onclick='deleteRow(this);' style=\"width: 100px;\">Delete</button></td>";
+            html += "<td class=\"border\"><div class=\"form-floating\"><textarea class=\"form-control h-textarea\" id=\"up_attendee_name\" name=\"up_attendee_name[]\"></textarea><label class=\"font-twelve\">Please fill in Name <span class=\"red font-twelve\">*</span></label></div></td>";
+            html += "<td class=\"border mit\"><div class=\"\"><textarea class=\"form-control h-textarea\" id=\"up_emp_id\" name=\"up_emp_id[]\"></textarea></div></td>";
+
+            html += "<td class=\"border mit\"><label class=\"font-twelve\" style=\"color: #999;\">Please select Position <span class=\"red font-twelve\">*</span></label>";
+            html += "<select name=\"up_position[]\" id=\"up_position\" class=\"form-select\">";
+            html += "<option value=\"\" class=\"mit\">- Select -</option>";
+            $.each(positionData[0].rows, function(index, positions) {
+                html += "<option value=\"" + positions.trimmed_position_name + "\">" + positions.trimmed_position_name + "</option>";
+            });
+            html += "</select></td>";
+            html += "<td class=\"border mit\"><label class=\"font-twelve\" style=\"color: #999;\">Please select Section <span class=\"red font-twelve\">*</span></label>";
+            html += "<select name=\"up_section[]\" id=\"up_section\" class=\"form-select\">";
+            html += "<option value=\"\" class=\"mit\">- Select -</option>";
+            $.each(sectionData[0].rows, function(index, sections) {
+                html += "<option value=\"" + sections.trim_section_name + "\">" + sections.trim_section_name + "</option>";
+            });
+            html += "</select></td>";
+            html += "<td class=\"border mit\">";
+            html += "<label class=\"font-twelve\" style=\"color: #999;\">Please select Division <span class=\"red font-twelve\">*</span></label>"
+            html += "<select name=\"up_division[]\" id=\"up_division\" class=\"form-select\" aria-label=\"Default select example\"><option value=\"\" class=\"mit\">- Select - </option>";
+            $.each(divisionData[0].rows, function(index, rowss) {
+                html += "<option value=\"" + rowss.division_name + "\">" + rowss.division_name + "</option>";
+            });
+            html += "</select></td>";
+            html += "<td class=\"border mit\"><label class=\"font-twelve\" style=\"color: #999;\">Please select Company <span class=\"red font-twelve\">*</span></label>";
+            html += "<select name=\"up_company[]\" id=\"up_company\" class=\"form-select\">";
+            html += "<option value=\"\" class=\"mit\">- Select -</option>";
+            $.each(companyData[0].rows, function(index, companys) {
+                html += "<option value=\"" + companys.trim_company_name + "\">" + companys.trim_company_name + "</option>";
+            });
+            html += "</select></td>";
+            html += "</tr>";
+            var row = document.getElementById("up_tbody").insertRow();
+            row.innerHTML = html;
+        }).fail(function(xhr, status, error) {
+            console.log("Error:", error);
+            alert("An error occurred while fetching data. Please try again later.");
         });
     }
 

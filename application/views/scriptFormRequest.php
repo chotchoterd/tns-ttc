@@ -1502,14 +1502,14 @@
             html += "<td class=\"border\"><div class=\"form-floating\"><textarea class=\"form-control h-textarea\" id=\"attendee_name\" name=\"attendee_name[]\"></textarea><label class=\"font-twelve\">Please fill in Name <span class=\"red font-twelve\">*</span></label></div></td>";
             html += "<td class=\"border mit\"><div class=\"\"><textarea class=\"form-control h-textarea\" id=\"emp_id\" name=\"emp_id[]\"></textarea></div></td>";
 
-            html += "<td class=\"border\"><label class=\"font-twelve\" style=\"color: #999;\">Please select Position <span class=\"red font-twelve\">*</span></label>";
+            html += "<td class=\"border mit\"><label class=\"font-twelve\" style=\"color: #999;\">Please select Position <span class=\"red font-twelve\">*</span></label>";
             html += "<select name=\"position[]\" id=\"position\" class=\"form-select\">";
             html += "<option value=\"\" class=\"mit\">- Select -</option>";
             $.each(positionData[0].rows, function(index, positions) {
                 html += "<option value=\"" + positions.trimmed_position_name + "\">" + positions.trimmed_position_name + "</option>";
             });
             html += "</select></td>";
-            html += "<td class=\"border\"><label class=\"font-twelve\" style=\"color: #999;\">Please select Section <span class=\"red font-twelve\">*</span></label>";
+            html += "<td class=\"border mit\"><label class=\"font-twelve\" style=\"color: #999;\">Please select Section <span class=\"red font-twelve\">*</span></label>";
             html += "<select name=\"section[]\" id=\"section\" class=\"form-select\">";
             html += "<option value=\"\" class=\"mit\">- Select -</option>";
             $.each(sectionData[0].rows, function(index, sections) {
