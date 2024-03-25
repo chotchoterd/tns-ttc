@@ -435,13 +435,13 @@
             emp_id += emp_id_list;
             var position = [];
             var position_list = [];
-            $.each($("textarea[name='up_position[]"), function() {
+            $.each($("select[name='up_position[]"), function() {
                 position_list.push($(this).val());
             });
             position += position_list;
             var section = [];
             var section_list = [];
-            $.each($("textarea[name='up_section[]"), function() {
+            $.each($("select[name='up_section[]"), function() {
                 section_list.push($(this).val());
             });
             section += section_list;
@@ -453,7 +453,7 @@
             division += division_list;
             var company = [];
             var company_list = [];
-            $.each($("textarea[name='up_company[]"), function() {
+            $.each($("select[name='up_company[]"), function() {
                 company_list.push($(this).val());
             });
             company += company_list;
@@ -1120,13 +1120,13 @@
         emp_id += emp_id_list;
         var position = [];
         var position_list = [];
-        $.each($("textarea[name='up_position[]"), function() {
+        $.each($("select[name='up_position[]"), function() {
             position_list.push($(this).val());
         });
         position += position_list;
         var section = [];
         var section_list = [];
-        $.each($("textarea[name='up_section[]"), function() {
+        $.each($("select[name='up_section[]"), function() {
             section_list.push($(this).val());
         });
         section += section_list;
@@ -1138,7 +1138,7 @@
         division += division_list;
         var company = [];
         var company_list = [];
-        $.each($("textarea[name='up_company[]"), function() {
+        $.each($("select[name='up_company[]"), function() {
             company_list.push($(this).val());
         });
         company += company_list;
@@ -1388,13 +1388,13 @@
         emp_id += emp_id_list;
         var position = [];
         var position_list = [];
-        $.each($("textarea[name='up_position[]"), function() {
+        $.each($("select[name='up_position[]"), function() {
             position_list.push($(this).val());
         });
         position += position_list;
         var section = [];
         var section_list = [];
-        $.each($("textarea[name='up_section[]"), function() {
+        $.each($("select[name='up_section[]"), function() {
             section_list.push($(this).val());
         });
         section += section_list;
@@ -1406,7 +1406,7 @@
         division += division_list;
         var company = [];
         var company_list = [];
-        $.each($("textarea[name='up_company[]"), function() {
+        $.each($("select[name='up_company[]"), function() {
             company_list.push($(this).val());
         });
         company += company_list;
