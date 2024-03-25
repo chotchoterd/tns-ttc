@@ -486,13 +486,13 @@ include 'scriptFormRequestForMoreInformation.php';
                     </td>
                 </tr>
                 <tr>
+                    <td class="form_request_head border mit">Action</td>
                     <td class="form_request_head border mit">Attendee Name<span class="red"> * </span></td>
                     <td class="form_request_head border mit">Employee ID</td>
                     <td class="form_request_head border mit">Position<span class="red"> * </span></td>
                     <td class="form_request_head border mit">Section<span class="red"> * </span></td>
                     <td class="form_request_head border mit">Division<span class="red"> * </span></td>
                     <td class="form_request_head border mit">Company<span class="red"> * </span></td>
-                    <td class="form_request_head border mit">Manage</td>
                 </tr>
                 <?php
                 $check_attendee_name['attendee_name'] = array();
@@ -520,6 +520,14 @@ include 'scriptFormRequestForMoreInformation.php';
                 $newArray_attendee_company = explode(",", $check_attendee_company['attendee_company']);
                 for ($i = 0; $i < count($newArray_attendee_name); $i++) { ?>
                     <tr>
+                        <td class="border mit">
+                            <!-- <button onclick="addInput()" class="btn btn-primary btn_color_df" type="button" style="width: 50px;"><b class="h4">+</b></button> -->
+                            <?php if ($i == 0) { ?>
+                                <button onclick="up_addInput()" class="btn btn-primary btn_color_df" type="button" style="width: 100px;">Add User</button>
+                            <?php } else { ?>
+                                <button onclick="deleteRow(this);" class="btn btn-primary btn_color_df" type="button" style="width: 100px;">Delete</button>
+                            <?php } ?>
+                        </td>
                         <td class="border">
                             <div class="">
                                 <textarea class="form-control h-textarea" id="up_attendee_name" name="up_attendee_name[]"><?php echo $newArray_attendee_name[$i] ?></textarea>
@@ -532,17 +540,33 @@ include 'scriptFormRequestForMoreInformation.php';
                                 <!-- <label class="font-twelve">Please fill in Training Provider <span class="red font-twelve">*</span></label> -->
                             </div>
                         </td>
-                        <td class="border">
-                            <div class="">
+                        <td class="border mit">
+                            <!-- <div class=""> -->
+                            <!-- <div class="form-floating">
                                 <textarea class="form-control h-textarea" id="up_position" name="up_position[]"><?php echo $newArray_attendee_position[$i] ?></textarea>
-                                <!-- <label class="font-twelve">Please fill in Position <span class="red font-twelve">*</span></label> -->
-                            </div>
+                                <label class="font-twelve">Please fill in Position <span class="red font-twelve">*</span></label>
+                            </div> -->
+                            <!-- <label class="font-twelve" style="color: #999;">Please select Position <span class="red font-twelve">*</span></label> -->
+                            <select name="up_position[]" id="up_position" class="form-select">
+                                <option value="" class="mit">- Select -</option>
+                                <?php foreach ($position_request as $position_requests) { ?>
+                                    <option value="<?php echo $position_requests->trimmed_position_name ?>" <?php if ($newArray_attendee_position[$i] == $position_requests->trimmed_position_name) echo "selected"; ?>><?php echo $position_requests->trimmed_position_name ?></option>
+                                <?php } ?>
+                            </select>
+                            <!-- </div> -->
                         </td>
-                        <td class="border">
-                            <div class="">
+                        <td class="border mit">
+                            <!-- <div class="form-floating">
                                 <textarea class="form-control h-textarea" id="up_section" name="up_section[]"><?php echo $newArray_attendee_section[$i] ?></textarea>
-                                <!-- <label class="font-twelve">Please fill in Section <span class="red font-twelve">*</span></label> -->
-                            </div>
+                                <label class="font-twelve">Please fill in Section <span class="red font-twelve">*</span></label>
+                            </div> -->
+                            <!-- <label class="font-twelve" style="color: #999;">Please select Section<span class="red font-twelve">*</span></label> -->
+                            <select name="up_section[]" id="up_section" class="form-select">
+                                <option value="" class="mit">- Select -</option>
+                                <?php foreach ($section_request as $section_requests) { ?>
+                                    <option value="<?php echo $section_requests->trim_section_name ?>" <?php if ($newArray_attendee_section[$i] == $section_requests->trim_section_name) echo "selected"; ?>><?php echo $section_requests->trim_section_name ?></option>
+                                <?php } ?>
+                            </select>
                         </td>
                         <td class="border mit">
                             <!-- <label class="font-twelve" style="color: #999;">Please select Division <span class="red font-twelve">*</span></label> -->
@@ -553,19 +577,18 @@ include 'scriptFormRequestForMoreInformation.php';
                                 <?php } ?>
                             </select>
                         </td>
-                        <td class="border">
-                            <div class="">
-                                <textarea class="form-control h-textarea" id="up_company" name="up_company[]"><?php echo $newArray_attendee_company[$i] ?></textarea>
-                                <!-- <label class="font-twelve">Please fill in Company <span class="red font-twelve">*</span></label> -->
-                            </div>
-                        </td>
                         <td class="border mit">
-                            <!-- <button onclick="addInput()" class="btn btn-primary btn_color_df" type="button" style="width: 50px;"><b class="h4">+</b></button> -->
-                            <?php if ($i == 0) { ?>
-                                <button onclick="up_addInput()" class="btn btn-primary btn_color_df" type="button" style="width: 100px;">Add User</button>
-                            <?php } else { ?>
-                                <button onclick="deleteRow(this);" class="btn btn-primary btn_color_df" type="button" style="width: 100px;">Delete</button>
-                            <?php } ?>
+                            <!-- <div class="form-floating">
+                                <textarea class="form-control h-textarea" id="up_company" name="up_company[]"><?php echo $newArray_attendee_company[$i] ?></textarea>
+                                <label class="font-twelve">Please fill in Company <span class="red font-twelve">*</span></label>
+                            </div> -->
+                            <!-- <label class="font-twelve" style="color: #999;">Please select Company <span class="red font-twelve">*</span></label> -->
+                            <select name="up_company[]" id="up_company" class="form-select">
+                                <option value="" class="mit">- Select -</option>
+                                <?php foreach ($company_request as $company_requests) { ?>
+                                    <option value="<?php echo $company_requests->trim_company_name ?>" <?php if ($newArray_attendee_company[$i] == $company_requests->trim_company_name) echo "selected"; ?>><?php echo $company_requests->trim_company_name ?></option>
+                                <?php } ?>
+                            </select>
                         </td>
                     </tr>
                 <?php } ?>
