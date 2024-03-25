@@ -833,7 +833,7 @@ include 'checkAdminUser.php';
                                 <label class="font-twelve">Please fill in Company <span class="red font-twelve">*</span></label>
                             </div> -->
                             <label class="font-twelve" style="color: #999;">Please select Company <span class="red font-twelve">*</span></label>
-                            <select name="company[]" id="company" class="form-select">
+                            <select name="up_company[]" id="up_company" class="form-select">
                                 <option value="" class="mit">- Select -</option>
                                 <?php foreach ($company_request as $company_requests) { ?>
                                     <option value="<?php echo $company_requests->trim_company_name ?>" <?php if ($newArray_attendee_company[$i] == $company_requests->trim_company_name) echo "selected"; ?>><?php echo $company_requests->trim_company_name ?></option>
