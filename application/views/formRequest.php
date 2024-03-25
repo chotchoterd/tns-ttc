@@ -846,7 +846,7 @@ include 'checkAdminUser.php';
                             <label class="font-twelve">Please fill in Position <span class="red font-twelve">*</span></label>
                         </div> -->
                         <label class="font-twelve" style="color: #999;">Please select Position <span class="red font-twelve">*</span></label>
-                        <select name="section[]" id="section" class="form-select">
+                        <select name="position[]" id="position" class="form-select">
                             <option value="" class="mit">- Select -</option>
                             <?php foreach ($position_request as $position_requests) { ?>
                                 <option value="<?php echo $position_requests->trimmed_position_name ?>" <?php if ($_SESSION["position"] == $position_requests->trimmed_position_name) echo "selected"; ?>><?php echo $position_requests->trimmed_position_name ?></option>
