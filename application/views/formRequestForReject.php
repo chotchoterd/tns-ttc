@@ -483,12 +483,12 @@ include 'scriptFormRequestForReject.php';
                     </td>
                 </tr>
                 <tr>
-                    <td class="form_request_head border mit">Action</td>
-                    <td class="form_request_head border mit">Attendee Name<span class="red"> * </span></td>
+                    <td class="form_request_head border mit" style="width: 10px;">Action</td>
+                    <td class="form_request_head border mit" style="width: 250px;">Attendee Name<span class="red"> * </span></td>
                     <td class="form_request_head border mit">Employee ID</td>
                     <td class="form_request_head border mit">Position<span class="red"> * </span></td>
                     <td class="form_request_head border mit">Section<span class="red"> * </span></td>
-                    <td class="form_request_head border mit">Division<span class="red"> * </span></td>
+                    <td class="form_request_head border mit" style="width: 250px;">Division<span class="red"> * </span></td>
                     <td class="form_request_head border mit">Company<span class="red"> * </span></td>
                 </tr>
                 <?php

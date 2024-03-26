@@ -737,12 +737,12 @@ include 'checkAdminUser.php';
                 </td>
             </tr>
             <tr>
-                <td class="form_request_head border mit">Action</td>
-                <td class="form_request_head border mit">Attendee Name<span class="red"> * </span></td>
+                <td class="form_request_head border mit" style="width: 10px;">Action</td>
+                <td class="form_request_head border mit" style="width: 250px;">Attendee Name<span class="red"> * </span></td>
                 <td class="form_request_head border mit">Employee ID</td>
                 <td class="form_request_head border mit">Position<span class="red"> * </span></td>
                 <td class="form_request_head border mit">Section<span class="red"> * </span></td>
-                <td class="form_request_head border mit">Division<span class="red"> * </span></td>
+                <td class="form_request_head border mit" style="width: 250px;">Division<span class="red"> * </span></td>
                 <td class="form_request_head border mit">Company<span class="red"> * </span></td>
             </tr>
             <?php if ($update_indicator == 1) { ?>
@@ -775,9 +775,9 @@ include 'checkAdminUser.php';
                         <td class="border mit">
                             <!-- <button onclick="addInput()" class="btn btn-primary btn_color_df" type="button" style="width: 50px;"><b class="h4">+</b></button> -->
                             <?php if ($i == 0) { ?>
-                                <button onclick="up_addInput()" class="btn btn-primary btn_color_df" type="button" style="width: 100px;">Add User</button>
+                                <button onclick="up_addInput()" class="btn btn-primary btn_color_df" type="button">Add User</button>
                             <?php } else { ?>
-                                <button onclick="deleteRow(this);" class="btn btn-primary btn_color_df" type="button" style="width: 100px;">Delete</button>
+                                <button onclick="deleteRow(this);" class="btn btn-primary btn_color_df" type="button">Delete</button>
                             <?php } ?>
                         </td>
                         <td class="border">

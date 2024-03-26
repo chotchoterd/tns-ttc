@@ -390,12 +390,12 @@ include('checkAdmin.php');
                     </td>
                 </tr>
                 <tr>
-                    <th class="form_request_head border mit">Action</th>
-                    <th class="form_request_head border mit">Attendee Name<span class="red"> * </span></th>
+                    <th class="form_request_head border mit" style="width: 10px;">Action</th>
+                    <th class="form_request_head border mit" style="width: 250px;">Attendee Name<span class="red"> * </span></th>
                     <th class="form_request_head border mit">Employee ID</th>
                     <th class="form_request_head border mit">Position<span class="red"> * </span></th>
                     <th class="form_request_head border mit">Section<span class="red"> * </span></th>
-                    <th class="form_request_head border mit">Division<span class="red"> * </span></th>
+                    <th class="form_request_head border mit" style="width: 250px;">Division<span class="red"> * </span></th>
                     <th class="form_request_head border mit">Company<span class="red"> * </span></th>
                 </tr>
                 <?php
