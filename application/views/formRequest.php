@@ -775,9 +775,9 @@ include 'checkAdminUser.php';
                         <td class="border mit">
                             <!-- <button onclick="addInput()" class="btn btn-primary btn_color_df" type="button" style="width: 50px;"><b class="h4">+</b></button> -->
                             <?php if ($i == 0) { ?>
-                                <button onclick="up_addInput()" class="btn btn-primary btn_color_df" type="button">Add User</button>
+                                <button onclick="up_addInput()" class="" type="button" style="width: 100px; border: none; background-color: rgba(0, 0, 0, 0);"><img src="<?php echo base_url('/img/plus-removebg-preview.png') ?>" alt="" width="30"></button>
                             <?php } else { ?>
-                                <button onclick="deleteRow(this);" class="btn btn-primary btn_color_df" type="button">Delete</button>
+                                <button onclick="deleteRow(this);" class="" type="button" style="border: none; background-color: rgba(0, 0, 0, 0);"><img src="<?php echo base_url('/img/minus-removebg-preview.png') ?>" width="45"></button>
                             <?php } ?>
                         </td>
                         <td class="border">
