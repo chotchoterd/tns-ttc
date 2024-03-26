@@ -847,7 +847,7 @@ include 'checkAdminUser.php';
             <?php } else { ?>
                 <tr>
                     <td class="border mit">
-                        <button onclick="addInput()" class="btn btn-primary btn_color_df" type="button" style="width: 100px;">Add User</button>
+                        <button onclick="addInput()" class="btn btn-primary btn_color_df" type="button" style="width: 100px;"><img src="<?php echo base_url('/img/plus-removebg-preview.png') ?>" alt="" width="10"> Add User</button>
                     </td>
                     <td class="border">
                         <div class="form-floating">
