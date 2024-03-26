@@ -1498,7 +1498,7 @@
             }),
         ).done(function(divisionData, positionData, sectionData, companyData) {
             var html = "<tr>";
-            html += "<td class=\"border mit\"><button class=\"btn btn-primary btn_color_df\" type='button' onclick='deleteRow(this);' style=\"width: 100px !important; background: red !important;\"><img src='" + base_url + "/img/minus-removebg-preview.png' width=\"15\"> Delete</button></td>";
+            html += "<td class=\"border mit\"><button class=\"btn btn-primary btn_color_df\" type='button' onclick='deleteRow(this);' style=\"width: 100px !important; background: red !important;\"><img src='" + base_url + "/img/minus-removebg-preview.png' width=\"30\"></button></td>";
             html += "<td class=\"border\"><div class=\"form-floating\"><textarea class=\"form-control h-textarea\" id=\"attendee_name\" name=\"attendee_name[]\"></textarea><label class=\"font-twelve\">Please fill in Name <span class=\"red font-twelve\">*</span></label></div></td>";
             html += "<td class=\"border mit\"><div class=\"\"><textarea class=\"form-control h-textarea\" id=\"emp_id\" name=\"emp_id[]\"></textarea></div></td>";
 
