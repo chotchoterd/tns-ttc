@@ -30,7 +30,7 @@ include('checkAdmin.php');
                             <tr>
                                 <td class="px-2">
                                     <!-- <input type="text" name="section_code" id="section_code" class="form-control" placeholder="Please fill in Section Code" > -->
-                                    <select name="up_section_code" id="up_section_code" class="form-select" aria-label="Default select example" style="width: 160px;">
+                                    <select name="up_section_code" id="up_section_code" class="form-select" aria-label="Default select example" style="width: 250px;">
                                         <option value="" class="mit">- Select -</option>
                                         <?php foreach ($approval_matrix as $approval_matrixs) { ?>
                                             <option value="<?php echo $approval_matrixs->modified_section_code ?>" <?php if ($training_request_datas->section_code == $approval_matrixs->section_code) echo "selected"; ?>><?php echo $approval_matrixs->section_code ?></option>
@@ -49,7 +49,7 @@ include('checkAdmin.php');
                             <tr>
                                 <td class="px-2">
                                     <!-- <input type="text" name="project_code" id="project_code" class="form-control" placeholder="Please fill in Project Code" > -->
-                                    <select name="up_project_code" id="up_project_code" class="form-select" aria-label="Default select example" style="width: 160px;">
+                                    <select name="up_project_code" id="up_project_code" class="form-select" aria-label="Default select example" style="width: 250px;">
                                         <option value="" class="mit">- Select -</option>
                                         <?php foreach ($approval_matrix_project_code as $approval_matrix_project_codes) { ?>
                                             <option value="<?php echo $approval_matrix_project_codes->project_code ?>" <?php if ($training_request_datas->project_code == $approval_matrix_project_codes->project_code) echo "selected"; ?>><?php echo $approval_matrix_project_codes->project_code ?></option>
@@ -68,7 +68,7 @@ include('checkAdmin.php');
                             <tr>
                                 <td class="px-2">
                                     <!-- <input type="text" name="cost_code" id="cost_code" class="form-control" placeholder="Please fill in Cost Code" > -->
-                                    <select name="up_cost_code" id="up_cost_code" class="form-select" aria-label="Default select example" style="width: 160px;">
+                                    <select name="up_cost_code" id="up_cost_code" class="form-select" aria-label="Default select example" style="width: 250px;">
                                         <option value="" class="mit">- Select -</option>
                                         <?php foreach ($approval_matrix_cost_code as $approval_matrix_cost_codes) { ?>
                                             <option value="<?php echo $approval_matrix_cost_codes->cost_code ?>" <?php if ($training_request_datas->cost_code == $approval_matrix_cost_codes->cost_code) echo "selected"; ?>><?php echo $approval_matrix_cost_codes->cost_code ?></option>
@@ -395,8 +395,8 @@ include('checkAdmin.php');
                     <th class="form_request_head border mit">Employee ID</th>
                     <th class="form_request_head border mit">Position<span class="red"> * </span></th>
                     <th class="form_request_head border mit">Section<span class="red"> * </span></th>
-                    <th class="form_request_head border mit" style="width: 250px;">Division<span class="red"> * </span></th>
-                    <th class="form_request_head border mit">Company<span class="red"> * </span></th>
+                    <th class="form_request_head border mit" style="width: 200px;">Division<span class="red"> * </span></th>
+                    <th class="form_request_head border mit" style="width: 200px;">Company<span class="red"> * </span></th>
                 </tr>
                 <?php
                 $check_attendee_name['attendee_name'] = array();

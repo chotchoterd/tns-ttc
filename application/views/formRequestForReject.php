@@ -55,7 +55,7 @@ include 'scriptFormRequestForReject.php';
                             <tr>
                                 <td class="px-2">
                                     <!-- <input type="text" name="project_code" id="project_code" class="form-control" placeholder="Please fill in Project Code" > -->
-                                    <select name="up_project_code" id="up_project_code" class="form-select" aria-label="Default select example" style="width: 150px;" <?php if ($training_request_datas->workflow_remark == "Rejected by Reviewer" || $training_request_datas->workflow_remark == "Rejected by Approver") echo "disabled"; ?>>
+                                    <select name="up_project_code" id="up_project_code" class="form-select" aria-label="Default select example" style="width: 250px;" <?php if ($training_request_datas->workflow_remark == "Rejected by Reviewer" || $training_request_datas->workflow_remark == "Rejected by Approver") echo "disabled"; ?>>
                                         <option value="" class="mit">- Select -</option>
                                         <?php foreach ($approval_matrix_project_code as $approval_matrix_project_codes) { ?>
                                             <option value="<?php echo $approval_matrix_project_codes->project_code ?>" <?php if ($training_request_datas->project_code == $approval_matrix_project_codes->project_code) echo "selected"; ?>><?php echo $approval_matrix_project_codes->project_code ?></option>
@@ -74,7 +74,7 @@ include 'scriptFormRequestForReject.php';
                             <tr>
                                 <td class="px-2">
                                     <!-- <input type="text" name="cost_code" id="cost_code" class="form-control" placeholder="Please fill in Cost Code" > -->
-                                    <select name="up_cost_code" id="up_cost_code" class="form-select" aria-label="Default select example" style="width: 150px;" <?php if ($training_request_datas->workflow_remark == "Rejected by Reviewer" || $training_request_datas->workflow_remark == "Rejected by Approver") echo "disabled"; ?>>
+                                    <select name="up_cost_code" id="up_cost_code" class="form-select" aria-label="Default select example" style="width: 250px;" <?php if ($training_request_datas->workflow_remark == "Rejected by Reviewer" || $training_request_datas->workflow_remark == "Rejected by Approver") echo "disabled"; ?>>
                                         <option value="" class="mit">- Select -</option>
                                         <?php foreach ($approval_matrix_cost_code as $approval_matrix_cost_codes) { ?>
                                             <option value="<?php echo $approval_matrix_cost_codes->cost_code ?>" <?php if ($training_request_datas->cost_code == $approval_matrix_cost_codes->cost_code) echo "selected"; ?>><?php echo $approval_matrix_cost_codes->cost_code ?></option>
@@ -488,8 +488,8 @@ include 'scriptFormRequestForReject.php';
                     <td class="form_request_head border mit">Employee ID</td>
                     <td class="form_request_head border mit">Position<span class="red"> * </span></td>
                     <td class="form_request_head border mit">Section<span class="red"> * </span></td>
-                    <td class="form_request_head border mit" style="width: 250px;">Division<span class="red"> * </span></td>
-                    <td class="form_request_head border mit">Company<span class="red"> * </span></td>
+                    <td class="form_request_head border mit" style="width: 200px;">Division<span class="red"> * </span></td>
+                    <td class="form_request_head border mit" style="width: 200px;">Company<span class="red"> * </span></td>
                 </tr>
                 <?php
                 $check_attendee_name['attendee_name'] = array();

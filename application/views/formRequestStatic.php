@@ -355,8 +355,8 @@ include 'checkAdminUser.php';
                     <td class="form_request_head border mit">Employee ID</td>
                     <td class="form_request_head border mit">Position</td>
                     <td class="form_request_head border mit">Section</td>
-                    <td class="form_request_head border mit" style="width: 250px;">Division</td>
-                    <td class="form_request_head border mit">Company</td>
+                    <td class="form_request_head border mit" style="width: 200px;">Division</td>
+                    <td class="form_request_head border mit" style="width: 200px;">Company</td>
                     <!-- <th class="form_request_head border mit">Manage</th> -->
                 </tr>
                 <?php
