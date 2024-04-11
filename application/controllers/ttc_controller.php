@@ -2422,4 +2422,27 @@ class Ttc_controller extends CI_Controller
         $this->load->view('RequestTrainer', $user_request_trainer);
         $this->load->view('include/footer');
     }
+
+    function TRRegisterData()
+    {
+        if (isset($_SESSION["username"])) {
+            $username = $_SESSION["username"];
+        } else {
+            $username = "";
+        }
+        if (isset($_SESSION["group"])) {
+            $group = $_SESSION["group"];
+        } else {
+            $group = "";
+        }
+        $user_request_course_title['user_request_course_title'] = $this->ttc->model_user_request_course_title();
+        $user_request_training_provider['user_request_training_provider'] = $this->ttc->model_user_request_training_provider();
+        $user_request_trainer['user_request_trainer'] = $this->ttc->model_user_request_trainer();
+        $approve_data['approve_data'] = $this->ttc->model_approve_data($username, $group);
+        $title['title'] = 'Manage Trainer';
+        $this->load->view('include/header', $title);
+        $this->load->view('include/menu', $approve_data + $user_request_course_title + $user_request_training_provider + $user_request_trainer);
+        $this->load->view('TRRegisterData', $user_request_trainer);
+        // $this->load->view('include/footer');
+    }
 }

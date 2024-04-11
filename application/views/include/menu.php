@@ -102,6 +102,14 @@ $Pending_trainer_name = 0;
                                     <?php } ?></a></li>
                         </ul>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Export 
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="<?php echo base_url('index.php/ttc_controller/TRRegisterData') ?>">TR Register data</a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <form class="d-flex text-end">
                     <div class="align-middle">
