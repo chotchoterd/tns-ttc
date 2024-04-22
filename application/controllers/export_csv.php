@@ -19,14 +19,14 @@ class Export_csv extends CI_Controller
         header("Content-Description: File Transfer");
         header("Content-Disposition: attachment; filename=$file_name");
         header("Content-Type: application/csv;");
-        // echo $year;
+
         // get data 
         $tr_register_data = $this->csv->model_tr_register_data($year, $month);
 
         // file creation 
         $file = fopen('php://output', 'w');
 
-        $header = array("TR NO.", "REQUESTOR NAME", "YEAR");
+        $header = array("TR.NO.", "Type", "Date Register (Received)", "TR/Training Status", "Learning Model", "Training Type", "Platform", "Section", "Division", "Course Title", "Training Provider", "Training Hr./Course", "Coures Fee Per Person", "No. of Attendee", "Start Date", "Finish Date", "Course CAT");
         fputcsv($file, $header);
         foreach ($tr_register_data->result_array() as $key => $value) {
             fputcsv($file, $value);
